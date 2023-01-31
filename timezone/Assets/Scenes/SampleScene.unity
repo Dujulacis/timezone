@@ -140,9 +140,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 5
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 10
+  m_LinearDrag: 1
+  m_AngularDrag: 1
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -242,7 +242,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6856296730094122556, guid: 7483b9897369a7b4480ed32167990fa3, type: 3}
       propertyPath: speed
-      value: 5
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 6856296730094122556, guid: 7483b9897369a7b4480ed32167990fa3, type: 3}
       propertyPath: target
@@ -250,7 +250,7 @@ PrefabInstance:
       objectReference: {fileID: 571799703}
     - target: {fileID: 6856296730094122556, guid: 7483b9897369a7b4480ed32167990fa3, type: 3}
       propertyPath: maxSpeed
-      value: 5
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7483b9897369a7b4480ed32167990fa3, type: 3}
@@ -633,6 +633,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5834093105251935732, guid: 8a7f8ed0b0631d24781825b019975e2f, type: 3}
+      propertyPath: moveSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5834093105251935732, guid: 8a7f8ed0b0631d24781825b019975e2f, type: 3}
       propertyPath: frameCamera
       value: 
       objectReference: {fileID: 519420031}
@@ -650,7 +654,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5834093105251935737, guid: 8a7f8ed0b0631d24781825b019975e2f, type: 3}
       propertyPath: m_Mass
-      value: 10
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 5834093105251935739, guid: 8a7f8ed0b0631d24781825b019975e2f, type: 3}
       propertyPath: m_RootOrder
