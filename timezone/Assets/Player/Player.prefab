@@ -42,10 +42,10 @@ GameObject:
   - component: {fileID: 5834093105251935739}
   - component: {fileID: 5834093105251935738}
   - component: {fileID: 5834093105251935737}
-  - component: {fileID: 5834093105251935732}
   - component: {fileID: 5834093105251935733}
-  - component: {fileID: 4330389448719262253}
-  - component: {fileID: -8545949990439419338}
+  - component: {fileID: 2795747092094271442}
+  - component: {fileID: 2537576000602992166}
+  - component: {fileID: 5737435766174135264}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -133,7 +133,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -142,21 +142,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &5834093105251935732
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5834093105251935736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4017c3e7a6763e44eabd03bda80da4c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 10
-  frameCamera: {fileID: 0}
-  rb: {fileID: 5834093105251935737}
 --- !u!61 &5834093105251935733
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -183,7 +168,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 10, y: 10.4}
   m_EdgeRadius: 0
---- !u!114 &4330389448719262253
+--- !u!114 &2795747092094271442
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -192,14 +177,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5834093105251935736}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adfeee7d01506bb41ad18e622a9b6ec4, type: 3}
+  m_Script: {fileID: 11500000, guid: 493e2d73f189cb340a736361585393c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 0}
   firePoint: {fileID: 0}
   fireRate: 0.5
   bulletForce: 20
---- !u!114 &-8545949990439419338
+--- !u!114 &2537576000602992166
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -208,6 +193,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 5834093105251935736}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83a3632dd7992354ab948cb115859e1c, type: 3}
+  m_Script: {fileID: 11500000, guid: bdd44060c91e9d449a720e49e7bf75fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 20
+  frameCamera: {fileID: 0}
+  rb: {fileID: 0}
+  Invincible: 0
+  health: 0
+  maxHealth: 100
+--- !u!114 &5737435766174135264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5834093105251935736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f21520c53a3247c42801dfca794aafff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

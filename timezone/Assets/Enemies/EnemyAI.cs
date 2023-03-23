@@ -8,6 +8,11 @@ public class EnemyAI : MonoBehaviour
     public float maxSpeed;
     public Transform target;
 
+    public float damage = 34;
+
+    public float knockbackForce = 100f;
+    public float movespeed = 500f;
+
     private Rigidbody2D rb;
 
     void Start()
@@ -30,5 +35,20 @@ public class EnemyAI : MonoBehaviour
         // Face the target
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, angle - 90);
+    }
+
+    
+    void OnCollisionEnter2D(Collision2D collision){
+        Collider2D collider = collision.collider;
+        DamageTable damageable =collider.GetComponent<DamageTable>();
+        if (damageable != null){
+
+            //changes the collision force direction
+            Vector2 direction = (collider.transform.position - transform.position).normalized;
+
+            Vector2 knockback = direction * knockbackForce;
+
+            damageable.OnHit(damage, knockback);
+        }
     }
 }
