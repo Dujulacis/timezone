@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    public GameObject bulletPrefab;
+    
+    [SerializeField] public GameObject bulletPrefab;
     public Transform firePoint;
     public float fireRate = 0.5f;
     public float bulletForce = 20f;
     private float fireTime;
+
 
     void Update()
     {
@@ -21,8 +23,8 @@ public class Shooting : MonoBehaviour
     void Shoot()
     {
         fireTime = Time.time + fireRate;
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation * Quaternion.Euler(new Vector3(0, 0, -90)));
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>(); 
         rb.AddForce(firePoint.up * bulletForce);
     }
-}
+} 

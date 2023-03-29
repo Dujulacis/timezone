@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Object
   - Obstacle
+  - Enemy
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -40,6 +42,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Bullet
+    uniqueID: 3194304177
+    locked: 0
   - name: Default
     uniqueID: 2410729565
     locked: 0
