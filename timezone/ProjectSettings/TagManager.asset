@@ -13,7 +13,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Tilemap
   - 
   - 
   - 
@@ -41,5 +41,11 @@ TagManager:
   - 
   m_SortingLayers:
   - name: Default
+    uniqueID: 2410729565
+    locked: 0
+  - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Tilemap
+    uniqueID: 3537209237
     locked: 0
