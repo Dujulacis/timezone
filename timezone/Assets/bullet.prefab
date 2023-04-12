@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbf8a61c2bc7e314ea598a717da34857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 10
   bulletCollider: {fileID: 8918369005316708078}
   player: {fileID: 0}
 --- !u!70 &8918369005316708078

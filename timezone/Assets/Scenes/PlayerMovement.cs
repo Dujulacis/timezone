@@ -90,6 +90,12 @@ public class PlayerMovement : MonoBehaviour
         } else if ( Input.GetKey(KeyCode.A) ){
             spriteRenderer.flipX = false;
         }
+
+        if (Input.GetMouseButtonDown(0)){
+            moveSpeed = moveSpeed * 0.5f;
+        } else if (Input.GetMouseButtonUp(0)){
+            moveSpeed = moveSpeed*2f;
+        }
     }
 
 
