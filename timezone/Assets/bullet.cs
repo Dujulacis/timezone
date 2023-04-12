@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class bullet : MonoBehaviour
 {
+    public float damage = 10f;
     public Collider2D bulletCollider;
     public GameObject player;
 
@@ -26,6 +27,14 @@ public class bullet : MonoBehaviour
         }
         
         else if (collision.gameObject.CompareTag("Enemy")){
+            // StartCoroutine(DespawnTimer());
+            EnemyAI enemy = collision.gameObject.GetComponent<EnemyAI>();
+
+            if (enemy != null){
+                enemy.Health -= damage;
+
+            }
+            bulletCollider.enabled = false;
             StartCoroutine(DespawnTimer());
         }
         

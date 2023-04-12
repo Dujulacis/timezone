@@ -15,6 +15,10 @@ public class PlayerMovement : MonoBehaviour
 
     public bool Invincible;
 
+    Animator animator;
+
+    SpriteRenderer spriteRenderer;
+
     public float health;
     public float maxHealth = 100;
 
@@ -24,6 +28,9 @@ public class PlayerMovement : MonoBehaviour
     {
         health = maxHealth;
         Invincible = false;
+        animator = GetComponent<Animator>();
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
 
@@ -71,6 +78,18 @@ public class PlayerMovement : MonoBehaviour
         float moveY = Input.GetAxisRaw("Vertical");
 
         moveDirection = new Vector2(moveX, moveY).normalized; 
+
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)){
+            animator.SetBool("IsMoving", true);
+        } else {
+            animator.SetBool("IsMoving", false);            
+        }
+
+        if ( Input.GetKey(KeyCode.D) ){
+            spriteRenderer.flipX = true;
+        } else if ( Input.GetKey(KeyCode.A) ){
+            spriteRenderer.flipX = false;
+        }
     }
 
 
