@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1494696253619093071}
   - component: {fileID: -7458615826003365060}
   - component: {fileID: 8918369005316708078}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: bullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletCollider: {fileID: 0}
+  player: {fileID: 0}
 --- !u!70 &8918369005316708078
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

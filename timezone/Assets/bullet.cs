@@ -5,10 +5,12 @@ using UnityEngine;
 public class bullet : MonoBehaviour
 {
     public Collider2D bulletCollider;
-
+    public GameObject player;
 
     private void Start(){
         bulletCollider = GetComponent<Collider2D>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        Physics2D.IgnoreCollision(player.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
     }
 
     IEnumerator DespawnTimer(){
@@ -26,8 +28,6 @@ public class bullet : MonoBehaviour
         else if (collision.gameObject.CompareTag("Enemy")){
             StartCoroutine(DespawnTimer());
         }
-        // else if (collision.gameObject.CompareTag("Bullet")){
-        //     Physics.IgnoreCollision(gameObject.GetComponent<CharacterController>(), gameObject.GetComponent<Collider>());
-        // }
+        
     }
 }
