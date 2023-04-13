@@ -7,6 +7,7 @@ public class bullet : MonoBehaviour
     public float damage = 10f;
     public Collider2D bulletCollider;
     public GameObject player;
+    public float knockbackForce = 100000f;
 
     private void Start(){
         bulletCollider = GetComponent<Collider2D>();
@@ -23,7 +24,10 @@ public class bullet : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision){
 
         if (collision.gameObject.CompareTag("Obstacle")){
-            Destroy(gameObject);
+            StartCoroutine(DespawnTimer());
+                Vector2 direction = (GetComponent<Collider2D>().transform.position - transform.position).normalized;
+                Vector2 knockback = direction * knockbackForce;
+                float angle = Random.Range(-7, 7); // maxAngleDeviation is the maximum angle deviation from the original direction
         }
         
         else if (collision.gameObject.CompareTag("Enemy")){

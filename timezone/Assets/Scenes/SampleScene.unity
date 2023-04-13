@@ -21288,7 +21288,7 @@ GameObject:
   m_Component:
   - component: {fileID: 589023756}
   - component: {fileID: 589023757}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ammo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21303,7 +21303,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 589023755}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 410, y: -274, z: -3019.5}
+  m_LocalPosition: {x: 829, y: -445, z: -3019.5}
   m_LocalScale: {x: 19.794498, y: 19.794498, z: 19.794498}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -21387,7 +21387,7 @@ GameObject:
   m_Component:
   - component: {fileID: 840008855}
   - component: {fileID: 840008856}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21402,7 +21402,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 840008854}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -377, y: 264, z: 0}
+  m_LocalPosition: {x: -768, y: 432, z: 0}
   m_LocalScale: {x: 16.6222, y: 16.6222, z: 16.6222}
   m_ConstrainProportionsScale: 0
   m_Children: []

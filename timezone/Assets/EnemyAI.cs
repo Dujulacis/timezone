@@ -59,7 +59,7 @@ public class EnemyAI : MonoBehaviour
     //     if (damageable != null){
 
     //         //changes the collision force direction
-    //         Vector2 direction = (collider.transform.position - transform.position).normalized;
+    //         Vector2 direction = ((GetComponent<Collider>().transform.position - transform.position).normalized;
 
     //         Vector2 knockback = direction * knockbackForce;
 
