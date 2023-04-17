@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1494696253619093068}
   - component: {fileID: 1494696253619093071}
   - component: {fileID: -7458615826003365060}
-  - component: {fileID: 8918369005316708078}
+  - component: {fileID: 2546533559529395664}
   m_Layer: 7
   m_Name: bullet
   m_TagString: Bullet
@@ -120,10 +120,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbf8a61c2bc7e314ea598a717da34857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  bulletCollider: {fileID: 8918369005316708078}
-  player: {fileID: 0}
---- !u!70 &8918369005316708078
+  damage: 6
+  bounceSpeedReduction: 0.5
+  bulletCollider: {fileID: 2546533559529395664}
+  player: {fileID: 5834093105251935736, guid: 8a7f8ed0b0631d24781825b019975e2f, type: 3}
+  knockbackForce: 1
+  rb: {fileID: 1494696253619093071}
+--- !u!70 &2546533559529395664
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,6 +139,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00038445, y: -0.001451727}
-  m_Size: {x: 0.14654347, y: 0.07860894}
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.14, y: 0.07}
   m_Direction: 1

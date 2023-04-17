@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class bullet : MonoBehaviour
 {
-    public float damage = 10f;
+    public float damage;
+
+    public float bounceSpeedReduction = 0.9f;
     public Collider2D bulletCollider;
     public GameObject player;
-    public float knockbackForce = 100000f;
+    public float knockbackForce = 100f;
+
+    public Rigidbody2D rb;
 
     private void Start(){
         bulletCollider = GetComponent<Collider2D>();
         player = GameObject.FindGameObjectWithTag("Player");
         Physics2D.IgnoreCollision(player.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        rb = GetComponent<Rigidbody2D>();
     }
 
     IEnumerator DespawnTimer(){
@@ -25,17 +30,23 @@ public class bullet : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Obstacle")){
             StartCoroutine(DespawnTimer());
-                Vector2 direction = (GetComponent<Collider2D>().transform.position - transform.position).normalized;
-                Vector2 knockback = direction * knockbackForce;
-                float angle = Random.Range(-7, 7); // maxAngleDeviation is the maximum angle deviation from the original direction
+
+            ContactPoint2D contact = collision.contacts[0];
+            Vector2 normal = contact.normal;
+            Vector2 reflection = Vector2.Reflect(rb.velocity.normalized, normal) + Random.insideUnitCircle * 0.5f;
+            // Vector2 reflection = Vector2.Reflect(transform.position - contactPoint, normal).normalized + Random.insideUnitCircle * 0.1f;
+            
+
+            rb.velocity = reflection * (rb.velocity.magnitude * bounceSpeedReduction);
+
         }
         
         else if (collision.gameObject.CompareTag("Enemy")){
             // StartCoroutine(DespawnTimer());
-            EnemyAI enemy = collision.gameObject.GetComponent<EnemyAI>();
+            damageableCharacter enemy = collision.gameObject.GetComponent<damageableCharacter>();
 
             if (enemy != null){
-                enemy.Health -= damage;
+                enemy.playerHealth -= damage;
 
             }
             bulletCollider.enabled = false;

@@ -22881,11 +22881,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1494696253619093066, guid: 28cc9a718ae46754094e94a7130f4f1f, type: 3}
   firePoint: {fileID: 1119787599}
-  fireRate: 0.0001
+  fireRate: 0.07
   bulletForce: 300
   shotsFired: 0
-  maxShots: 8
-  reloadTime: 2
+  maxShots: 50
+  reloadTime: 3
 --- !u!1 &1475862241
 GameObject:
   m_ObjectHideFlags: 0
@@ -24158,6 +24158,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 122648098601180580, guid: 8a7f8ed0b0631d24781825b019975e2f, type: 3}
+      propertyPath: _health
+      value: 100000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 122648098601180580, guid: 8a7f8ed0b0631d24781825b019975e2f, type: 3}
+      propertyPath: disableSimulation
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 470337294538192961, guid: 8a7f8ed0b0631d24781825b019975e2f, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.09
@@ -24225,6 +24233,10 @@ PrefabInstance:
     - target: {fileID: 5834093105251935732, guid: 8a7f8ed0b0631d24781825b019975e2f, type: 3}
       propertyPath: moveSpeed
       value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 5834093105251935732, guid: 8a7f8ed0b0631d24781825b019975e2f, type: 3}
+      propertyPath: Invincible
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5834093105251935732, guid: 8a7f8ed0b0631d24781825b019975e2f, type: 3}
       propertyPath: frameCamera

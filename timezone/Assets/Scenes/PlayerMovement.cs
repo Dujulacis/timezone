@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 moveDirection;
 
-
+    public float knockbackForce = 10000f;
     private float invincCooldown = 1.0f;
 
     public bool Invincible;
@@ -19,43 +19,14 @@ public class PlayerMovement : MonoBehaviour
 
     SpriteRenderer spriteRenderer;
 
-    public float health;
-    public float maxHealth = 100;
-
 
     //Start is called before the first frame update
     void Start()
     {
-        health = maxHealth;
         Invincible = false;
         animator = GetComponent<Animator>();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
-    }
-
-
-    public float Health
-    {
-        set{
-            // if (value < health){
-            //     animator.SetTrigger("hit");
-
-            //     RectTransform textTransform = Instantiate(healthText).GetComponent<RectTransform>();
-            //     textTransform.transform.position = Camera.main.WorldToScreenPoint(gameObject.transform.position);
-
-            //     Canvas canvas = GameObject.FindObjectOfType<Canvas>();
-            //     textTransform.SetParent(canvas.transform);
-            // }
-            health = value;
-
-            if(health <=0){
-                // animator.SetBool("isAlive", false);
-                Destroy(gameObject);
-            }
-        }
-        get{
-            return health;
-        }
     }
 
 
@@ -119,19 +90,24 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    public void OnHit(float damage, Vector2 knockback)
-    {
-        if (Invincible == false){
-            Health -= damage;
-
-            rb.AddForce(knockback, ForceMode2D.Impulse);
-
-            InvincEnabled();
-        }
-    }
 
 
-    // public void OnHit(float damage, Vector2 knockback)
+ 
+}
+
+//void OnCollisionEnter2D(Collision2D collision){
+//     Collider2D collider = collision.collider;
+//     DamageTable damageable =collider.GetComponent<DamageTable>();
+//     if (damageable != null && !Invincible){
+//         Vector2 direction = (collider.transform.position - transform.position).normalized;
+//         Vector2 knockback = direction * knockbackForce;
+//         damageable.OnHit(0,Vector2.zero);
+
+//         InvincEnabled();
+//     }
+// }
+
+   // public void OnHit(float damage, Vector2 knockback)
     // {
     //     if (!Invincible){
     //         Health -= damage;
@@ -142,4 +118,27 @@ public class PlayerMovement : MonoBehaviour
     //     }
     // }
 
-}
+
+    // public float Health
+    // {
+    //     set{
+    //         // if (value < health){
+    //         //     animator.SetTrigger("hit");
+
+    //         //     RectTransform textTransform = Instantiate(healthText).GetComponent<RectTransform>();
+    //         //     textTransform.transform.position = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+
+    //         //     Canvas canvas = GameObject.FindObjectOfType<Canvas>();
+    //         //     textTransform.SetParent(canvas.transform);
+    //         // }
+    //         health = value;
+
+    //         if(health <=0){
+    //             // animator.SetBool("isAlive", false);
+    //             Destroy(gameObject);
+    //         }
+    //     }
+    //     get{
+    //         return health;
+    //     }
+    // }
