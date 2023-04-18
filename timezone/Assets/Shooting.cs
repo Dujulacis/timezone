@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Shooting : MonoBehaviour
 {
@@ -17,12 +19,17 @@ public class Shooting : MonoBehaviour
     public float reloadTime = 1.5f;
     public bool isReloading = false;
 
+    public int ammoCount;
+    public TextMeshProUGUI ammoDisplay;
+
     void Update()
     {
         if (Input.GetButton("Fire1") && Time.time > fireTime && !isReloading)
         {
             Shoot();
             shotsFired++;
+            ammoCount = maxShots-shotsFired;
+            ammoDisplay.text = ammoCount.ToString() + "/" + maxShots.ToString();
             if (shotsFired >= maxShots)
             {
                 StartCoroutine(Reload());
@@ -49,5 +56,7 @@ public class Shooting : MonoBehaviour
         yield return new WaitForSeconds(reloadTime);
         shotsFired = 0;
         isReloading = false;
+        ammoCount = maxShots;
+        ammoDisplay.text = ammoCount.ToString() + "/" + maxShots.ToString();
     }
 } 
