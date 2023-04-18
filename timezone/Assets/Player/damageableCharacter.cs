@@ -5,14 +5,33 @@ using UnityEngine;
 public class damageableCharacter : MonoBehaviour, DamageTable
 {
 
+    public GameObject DamageNumbers;
     public bool disableSimulation = false;
     Collider2D physicsCollider;
-
+    [SerializeField] float delayBeforeDestroy = 2f;
+    GameObject Gun;
+    Vector3 startPos;
+    
+    SpriteRenderer spriteRenderer;
     Animator animator;
+    public bool canTurnInvincible = false;
+    public float invincibilityTime = 0.25f;
+    public float invincTimeElapsed = 0f;
+    public bool Invincible {get {
+        return _invincible;
+    } set {
+        _invincible = value;
+        if (Invincible==true){
+            invincTimeElapsed = 0f;
+        }
+     }
+    }
 
-    public float _health = 100f;
+    float _health = 100f;
+    public bool _invincible = false;
+    bool _targetable = true;
 
-    public bool _targetable = true;
+    public float score = 0;
 
     Rigidbody2D rb;
     public float playerHealth
@@ -20,6 +39,11 @@ public class damageableCharacter : MonoBehaviour, DamageTable
         set{
             if(value < _health){
                 // animator.SetTrigger("hit");
+                RectTransform textTransform = Instantiate(DamageNumbers).GetComponent<RectTransform>();
+                textTransform.transform.position = Camera.main.ScreenToWorldPoint(gameObject.transform.position);
+
+                Canvas canvas = GameObject.FindObjectOfType<Canvas>();
+                textTransform.SetParent(canvas.transform);
             }
 
             _health = value;
@@ -27,6 +51,8 @@ public class damageableCharacter : MonoBehaviour, DamageTable
             if(_health <=0){
                 // animator.SetBool("isAlive", false);
                 Targetable = false;
+                OnObjectDestroyed();
+
             }
         }
         get{
@@ -48,9 +74,10 @@ public class damageableCharacter : MonoBehaviour, DamageTable
 
     void Start()
     {
-        // Invincible = false;
+        startPos = transform.position;
+        Invincible = false;
         // animator = GetComponent<Animator>();
-
+        spriteRenderer = GetComponent<SpriteRenderer>();
         // animator.SetBool("isAlive", true);
         rb = GetComponent<Rigidbody2D>();
         physicsCollider = GetComponent<Collider2D>();
@@ -60,16 +87,49 @@ public class damageableCharacter : MonoBehaviour, DamageTable
 
         public void OnHit(float damage, Vector2 knockback)
     {
-        // if (Invincible == false){
+        if (!Invincible){
             playerHealth -= damage;
 
             rb.AddForce(knockback, ForceMode2D.Impulse);
 
-            // InvincEnabled();
-        // }
+            if(canTurnInvincible){
+                //activate invincibility and timer
+                Invincible = true;
+            }
+        }
     }
 
     public void OnObjectDestroyed(){
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+        Invoke("Respawn", delayBeforeDestroy);
+        if(gameObject.tag=="Enemy"){
+            score += 100;
+            Debug.Log(score);
+                }
+    }
+
+    public void FixedUpdate(){
+        if (Invincible){
+            invincTimeElapsed += Time.deltaTime;
+
+            if (invincTimeElapsed > invincibilityTime){
+                Invincible = false;
+            }
+        }
+    }
+
+    void Respawn(){
+        // GameObject enemyClone = GameObject.Instantiate(enemyRef);
+        // enemyClone.transform.position = new Vector3(Random.Range(startPos.x - 1,startPos.x +1), Random.Range(startPos.y -1, startPos.y +1), startPos.z);
+
+        _health = 100f;
+        gameObject.SetActive(true);
+        rb.simulated = true;
+        physicsCollider.enabled = true;
+        rb.transform.position = new Vector3(Random.Range(startPos.x - 1,startPos.x +1), Random.Range(startPos.y -1, startPos.y +1), startPos.z);
+
+        // Gun.GetComponent<Shooting>().isReloading = false;
+        
+        //respawn enemy
     }
 }

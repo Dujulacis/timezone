@@ -8,6 +8,8 @@ TagManager:
   - Obstacle
   - Enemy
   - Bullet
+  - Canvas
+  - DamageNumber
   layers:
   - Default
   - TransparentFX
@@ -45,11 +47,17 @@ TagManager:
   - name: Bullet
     uniqueID: 3194304177
     locked: 0
+  - name: DamageNumber
+    uniqueID: 2099213997
+    locked: 0
   - name: Default
     uniqueID: 2410729565
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 3095726575
     locked: 0
   - name: Tilemap
     uniqueID: 3537209237

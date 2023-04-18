@@ -7,7 +7,6 @@ public class EnemyAI : MonoBehaviour
     public float speed;
     public float maxSpeed;
     public Transform target;
-
     public float enemyDamage = 34f;
 
     public float knockbackForce = 10000f;
@@ -38,20 +37,19 @@ public class EnemyAI : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision){
         Collider2D collider = collision.collider;
         DamageTable damageable =collider.GetComponent<DamageTable>();
-        if (damageable != null){
+        if (collision.gameObject.CompareTag("Player")){
+            if (damageable != null){
 
-            //changes the collision force direction
-            Vector2 direction = (collider.transform.position - transform.position).normalized;
+                //changes the collision force direction
+                Vector2 direction = (collider.transform.position - transform.position).normalized;
 
-            Vector2 knockback = direction * knockbackForce;
+                Vector2 knockback = direction * knockbackForce;
 
-            damageable.OnHit(enemyDamage, knockback);
+                damageable.OnHit(enemyDamage, knockback);
+            }
+             
         }
     }
 
-
-    public void Defeated(){
-        Destroy(gameObject);
-    }
 }
 

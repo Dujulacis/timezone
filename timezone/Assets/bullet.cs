@@ -33,7 +33,7 @@ public class bullet : MonoBehaviour
 
             ContactPoint2D contact = collision.contacts[0];
             Vector2 normal = contact.normal;
-            Vector2 reflection = Vector2.Reflect(rb.velocity.normalized, normal) + Random.insideUnitCircle * 0.5f;
+            Vector2 reflection = Vector2.Reflect(rb.velocity.normalized - normal, normal) + Random.insideUnitCircle * 0.5f;
             // Vector2 reflection = Vector2.Reflect(transform.position - contactPoint, normal).normalized + Random.insideUnitCircle * 0.1f;
             
 
@@ -44,6 +44,7 @@ public class bullet : MonoBehaviour
         else if (collision.gameObject.CompareTag("Enemy")){
             // StartCoroutine(DespawnTimer());
             damageableCharacter enemy = collision.gameObject.GetComponent<damageableCharacter>();
+            
 
             if (enemy != null){
                 enemy.playerHealth -= damage;

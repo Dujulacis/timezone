@@ -10,10 +10,10 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 moveDirection;
 
-    public float knockbackForce = 10000f;
+    // public float knockbackForce = 10000f;
     private float invincCooldown = 1.0f;
 
-    public bool Invincible;
+    public bool Invincible = false;
 
     Animator animator;
 

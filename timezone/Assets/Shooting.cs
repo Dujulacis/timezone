@@ -15,7 +15,7 @@ public class Shooting : MonoBehaviour
     public int maxShots = 30;
     
     public float reloadTime = 1.5f;
-    private bool isReloading = false;
+    public bool isReloading = false;
 
     void Update()
     {

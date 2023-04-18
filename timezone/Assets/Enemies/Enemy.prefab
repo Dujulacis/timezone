@@ -102,7 +102,7 @@ MonoBehaviour:
   speed: 400
   maxSpeed: 400
   target: {fileID: 0}
-  enemyDamage: 0
+  enemyDamage: 34
   knockbackForce: 100
 --- !u!70 &8262064800254541914
 CapsuleCollider2D:
@@ -132,6 +132,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67eda155abef3e8478b69fb5e615e363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSimulation: 0
+  DamageNumbers: {fileID: 4637678440431421887, guid: f4543a80c5eaef14e925336f11b57b7d, type: 3}
+  disableSimulation: 1
+  canTurnInvincible: 0
+  invincibilityTime: 0
+  invincTimeElapsed: 0
   _health: 100
+  _invincible: 0
   _targetable: 1
