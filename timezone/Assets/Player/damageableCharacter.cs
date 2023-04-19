@@ -10,7 +10,7 @@ public class damageableCharacter : MonoBehaviour, DamageTable
     public bool disableSimulation = false;
     Collider2D physicsCollider;
     [SerializeField] float delayBeforeDestroy = 2f;
-    GameObject Gun;
+    Shooting shooting;
     Vector3 startPos;
     
     SpriteRenderer spriteRenderer;
@@ -45,6 +45,7 @@ public class damageableCharacter : MonoBehaviour, DamageTable
 
                 Canvas canvas = GameObject.FindObjectOfType<Canvas>();
                 textTransform.SetParent(canvas.transform);
+                shooting = GetComponent<Shooting>();
             }
 
             _health = value;
@@ -120,16 +121,17 @@ public class damageableCharacter : MonoBehaviour, DamageTable
     }
 
     void Respawn(){
-        // GameObject enemyClone = GameObject.Instantiate(enemyRef);
-        // enemyClone.transform.position = new Vector3(Random.Range(startPos.x - 1,startPos.x +1), Random.Range(startPos.y -1, startPos.y +1), startPos.z);
 
         _health = 100f;
         gameObject.SetActive(true);
         rb.simulated = true;
         physicsCollider.enabled = true;
         rb.transform.position = new Vector3(Random.Range(startPos.x - 1,startPos.x +1), Random.Range(startPos.y -1, startPos.y +1), startPos.z);
+    
+        if (gameObject.CompareTag("Player")){
+            Shooting.shouldReload = true;
+        }
 
-        // Gun.GetComponent<Shooting>().isReloading = false;
         
         //respawn enemy
     }

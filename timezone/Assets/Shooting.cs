@@ -15,7 +15,7 @@ public class Shooting : MonoBehaviour
 
     public int shotsFired;
     public int maxShots = 30;
-    
+    static public bool shouldReload = false;
     public float reloadTime = 1.5f;
     public bool isReloading = false;
 
@@ -39,6 +39,14 @@ public class Shooting : MonoBehaviour
                 fireTime = Time.time + fireRate;
             }
         }
+        if (shouldReload == true){
+            reloadTime = 0.1f;
+            StartCoroutine(Reload());
+            reloadTime = 3f;
+            shouldReload =false;
+            Debug.Log("Should reload recieved");
+        }
+
     }
 
     void Shoot()
@@ -50,7 +58,7 @@ public class Shooting : MonoBehaviour
         rb.AddForce(direction * bulletForce);
     }
 
-    IEnumerator Reload()
+    public IEnumerator Reload()
     {
         isReloading = true;
         yield return new WaitForSeconds(reloadTime);
